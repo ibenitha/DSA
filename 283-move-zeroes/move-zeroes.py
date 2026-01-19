@@ -4,10 +4,8 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         left = 0
-        right = 0
-        while left < len(nums):
-            if nums[left] != 0:
+        for right in range(len(nums)):
+            if nums[right] != 0:
                 nums[left],nums[right] = nums[right],nums[left]
-                right += 1
-            left += 1
-                
+                left += 1
+        return nums
