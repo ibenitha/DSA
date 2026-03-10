@@ -6,21 +6,19 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        if not root:
-            return 0
-
+       
         stack = [(root,1)]
 
         max_d = 0
 
         while stack:
-            node,dep = stack.pop()
-            max_d = max(max_d,dep)
+            root,dep = stack.pop()
+            if root:
+                max_d = max(max_d,dep)
+                stack.append((root.left,dep+1))
+                stack.append((root.right, dep+1))
 
-            if node.left:
-                stack.append((node.left, dep + 1))
-            if node.right:
-                stack.append((node.right,dep + 1))
+           
         return max_d
 
         
